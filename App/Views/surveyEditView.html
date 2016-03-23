@@ -1,0 +1,9 @@
+﻿<h2>Survey Edit View</h2>
+<ol>
+	<li ng-repeat="question in questions">
+		{{ question.name }}
+		<input ng-model="question.name"/>
+	</li>
+	<li><input ng-model="newQuestionName"/> <a class="btn btn-primary" ng-model="addNewQuestion(newQuestionName)">Add new question</a></li>
+</ol>
+<a ng-href="#" class="btn btn-primary">Return to Survey</a>

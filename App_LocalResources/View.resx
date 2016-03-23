@@ -124,7 +124,7 @@
     <value>Collapse All</value>
   </data>
   <data name="ConfirmDelete.Text" xml:space="preserve">
-    <value>Are you sure you want to delete this Item</value>
+    <value>Are you sure you want to delete this Question</value>
   </data>
   <data name="DeleteItem.Text" xml:space="preserve">
     <value>Delete</value>
@@ -133,6 +133,6 @@
     <value>Edit</value>
   </data>
   <data name="EditModule.Text" xml:space="preserve">
-    <value>Add Item</value>
+    <value>Add Question</value>
   </data>
 </root>

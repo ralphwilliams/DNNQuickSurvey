@@ -18,53 +18,53 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 	[SupportedModules("DNNQuickSurvey")]
 	[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
 
-	public class ItemController : DnnApiController
+	public class QuestionController : DnnApiController
 	{
-		private readonly IItemRepository _repository;
+		private readonly IQuestionRepository _repository;
 
-		public ItemController(IItemRepository repository)
+		public QuestionController(IQuestionRepository repository)
 		{
 			Requires.NotNull(repository);
 
 			this._repository = repository;
 		}
 
-		public ItemController() : this(ItemRepository.Instance) { }
+		public QuestionController() : this(QuestionRepository.Instance) { }
 
-		public HttpResponseMessage Delete(int itemId)
+		public HttpResponseMessage Delete(int questionId)
 		{
-			var item = _repository.GetItem(itemId, ActiveModule.ModuleID);
+			var question = _repository.GetQuestion(questionId, ActiveModule.ModuleID);
 
-			_repository.DeleteItem(item);
+			_repository.DeleteQuestion(question);
 
 			return Request.CreateResponse(System.Net.HttpStatusCode.NoContent);
 		}
 
-		public HttpResponseMessage Get(int itemId)
+		public HttpResponseMessage Get(int questionId)
 		{
-			var item = new ItemViewModel(_repository.GetItem(itemId, ActiveModule.ModuleID));
+			var question = new QuestionViewModel(_repository.GetQuestion(questionId, ActiveModule.ModuleID));
 
-			return Request.CreateResponse(item);
+			return Request.CreateResponse(question);
 		}
 
 		public HttpResponseMessage GetList()
 		{
-			List<ItemViewModel> items;
+			List<QuestionViewModel> questions;
 
 			if (Globals.IsEditMode())
 			{
-				items = _repository.GetItems(ActiveModule.ModuleID)
-					   .Select(item => new ItemViewModel(item, GetEditUrl(item.ItemId)))
+				questions = _repository.GetQuestions(ActiveModule.ModuleID)
+					   .Select(question => new QuestionViewModel(question, GetEditUrl(question.QuestionId)))
 					   .ToList();
 			}
 			else
 			{
-				items = _repository.GetItems(ActiveModule.ModuleID)
-					   .Select(item => new ItemViewModel(item, ""))
+				questions = _repository.GetQuestions(ActiveModule.ModuleID)
+					   .Select(question => new QuestionViewModel(question, ""))
 					   .ToList();
 			}
 
-			return Request.CreateResponse(items);
+			return Request.CreateResponse(questions);
 		}
 
 		protected string GetEditUrl(int id)
@@ -80,52 +80,52 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public HttpResponseMessage Upsert(ItemViewModel item)
+		public HttpResponseMessage Upsert(QuestionViewModel question)
 		{
-			if (item.Id > 0)
+			if (question.Id > 0)
 			{
-				var t = Update(item);
+				var t = Update(question);
 				return Request.CreateResponse(System.Net.HttpStatusCode.NoContent);
 			}
 			else
 			{
-				var t = Create(item);
-				return Request.CreateResponse(t.ItemId);
+				var t = Create(question);
+				return Request.CreateResponse(t.QuestionId);
 			}
 
 		}
 
-		private Item Create(ItemViewModel item)
+		private Question Create(QuestionViewModel question)
 		{
-			Item t = new Item
+			Question t = new Question
 			{
-				ItemName = item.Name,
-				ItemDescription = item.Description,
-				AssignedUserId = item.AssignedUser,
+				QuestionName = question.Name,
+				QuestionType = question.Description,
+				AssignedUserId = question.AssignedUser,
 				ModuleId = ActiveModule.ModuleID,
 				CreatedByUserId = UserInfo.UserID,
 				LastModifiedByUserId = UserInfo.UserID,
 				CreatedOnDate = DateTime.UtcNow,
 				LastModifiedOnDate = DateTime.UtcNow
 			};
-			_repository.AddItem(t);
+			_repository.AddQuestion(t);
 
 			return t;
 		}
 
-		private Item Update(ItemViewModel item)
+		private Question Update(QuestionViewModel question)
 		{
 
-			var t = _repository.GetItem(item.Id, ActiveModule.ModuleID);
+			var t = _repository.GetQuestion(question.Id, ActiveModule.ModuleID);
 			if (t != null)
 			{
-				t.ItemName = item.Name;
-				t.ItemDescription = item.Description;
-				t.AssignedUserId = item.AssignedUser;
+				t.QuestionName = question.Name;
+				t.QuestionType = question.Description;
+				t.AssignedUserId = question.AssignedUser;
 				t.LastModifiedByUserId = UserInfo.UserID;
 				t.LastModifiedOnDate = DateTime.UtcNow;
 			}
-			_repository.UpdateItem(t);
+			_repository.UpdateQuestion(t);
 
 			return t;
 		}

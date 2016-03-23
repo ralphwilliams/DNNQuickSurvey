@@ -15,21 +15,21 @@ using DotNetNuke.Collections;
 
 namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 {
-	public interface IItemRepository
+	public interface IQuestionRepository
 	{
 
-		int AddItem(Item t);
+		int AddQuestion(Question t);
 
-		void DeleteItem(int itemId, int moduleId);
+		void DeleteQuestion(int questionId, int moduleId);
 
-		void DeleteItem(Item t);
+		void DeleteQuestion(Question t);
 
-		Item GetItem(int itemId, int moduleId);
+		Question GetQuestion(int questionId, int moduleId);
 
-		IQueryable<Item> GetItems(int moduleId);
+		IQueryable<Question> GetQuestions(int moduleId);
 
-		IPagedList<Item> GetItems(string searchTerm, int moduleId, int pageIndex, int pageSize);
+		IPagedList<Question> GetQuestions(string searchTerm, int moduleId, int pageIndex, int pageSize);
 
-		void UpdateItem(Item t);
+		void UpdateQuestion(Question t);
 	}
 }

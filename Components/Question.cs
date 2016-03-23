@@ -18,28 +18,28 @@ using DotNetNuke.Entities.Content;
 
 namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 {
-	[TableName("DNNQuickSurvey_Items")]
+	[TableName("DNNQuickSurvey_Questions")]
 	//setup the primary key for table
-	[PrimaryKey("ItemId", AutoIncrement = true)]
+	[PrimaryKey("QuestionId", AutoIncrement = true)]
 	//configure caching using PetaPoco
-	[Cacheable("Items", CacheItemPriority.Default, 20)]
+	[Cacheable("Questions", CacheItemPriority.Default, 20)]
 	//scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
 	[Scope("ModuleId")]
-	public class Item
+	public class Question
 	{
 		///<summary>
-		/// The ID of your object with the name of the ItemName
+		/// The ID of your object with the name of the QuestionName
 		///</summary>
-		public int ItemId { get; set; }
+		public int QuestionId { get; set; }
 		///<summary>
-		/// A string with the name of the ItemName
+		/// A string with the name of the QuestionName
 		///</summary>
-		public string ItemName { get; set; }
+		public string QuestionName { get; set; }
 
 		///<summary>
 		/// A string with the description of the object
 		///</summary>
-		public string ItemDescription { get; set; }
+		public string QuestionType { get; set; }
 
 		///<summary>
 		/// An integer with the user id of the assigned user for the object

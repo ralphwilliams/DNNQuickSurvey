@@ -8,15 +8,15 @@
 /*****                                                  *****/
 /************************************************************/
 
-IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Items]') AND type in (N'U'))
-	DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Items]
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Questions]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Questions]
 GO
 
-CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Items
+CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Questions
 (
-	[ItemId] INT NOT NULL IDENTITY (1, 1),
-	[ItemName] NVARCHAR(MAX) NOT NULL,
-	[ItemDescription] NVARCHAR(MAX) NOT NULL,
+	[QuestionId] INT NOT NULL IDENTITY (1, 1),
+	[QuestionName] NVARCHAR(MAX) NOT NULL,
+	[QuestionType] NVARCHAR(MAX) NOT NULL,
 	[AssignedUserId] INT NULL,
 	[ModuleId] INT NOT NULL,
 	[CreatedOnDate] DATETIME NOT NULL,
@@ -27,9 +27,34 @@ CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Items
 GO
 
 
-ALTER TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Items] ADD CONSTRAINT [PK_{objectQualifier}DNNQuickSurvey_Items] PRIMARY KEY CLUSTERED ([ItemId])
+ALTER TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Questions] ADD CONSTRAINT [PK_{objectQualifier}DNNQuickSurvey_Questions] PRIMARY KEY CLUSTERED ([QuestionId])
 GO
 
+
+
+/*************************/
+/***** Results Table *****/
+/*************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Results
+(
+	[ResultId] INT NOT NULL IDENTITY (1, 1),
+	[ResultValue] INT NOT NULL,
+	[ModuleId] INT NOT NULL,
+	[CreatedOnDate] DATETIME NOT NULL,
+	[CreatedByUserId] INT NOT NULL,
+	[LastModifiedOnDate] DATETIME NOT NULL,
+	[LastModifiedByUserId] INT NOT NULL
+)
+GO
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Results] ADD CONSTRAINT [PK_{objectQualifier}DNNQuickSurvey_Results] PRIMARY KEY CLUSTERED ([ResultId])
+GO
 
 /************************************************************/
 /*****              SqlDataProvider                     *****/

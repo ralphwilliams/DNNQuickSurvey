@@ -110,7 +110,7 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 
 		//foreach (DNNQuickSurveyInfo objDNNQuickSurvey in colDNNQuickSurveys)
 		//{
-		//    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objDNNQuickSurvey.Content, objDNNQuickSurvey.CreatedByUser, objDNNQuickSurvey.CreatedDate, ModInfo.ModuleID, objDNNQuickSurvey.ItemId.ToString(), objDNNQuickSurvey.Content, "ItemId=" + objDNNQuickSurvey.ItemId.ToString());
+		//    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objDNNQuickSurvey.Content, objDNNQuickSurvey.CreatedByUser, objDNNQuickSurvey.CreatedDate, ModInfo.ModuleID, objDNNQuickSurvey.QuestionId.ToString(), objDNNQuickSurvey.Content, "QuestionId=" + objDNNQuickSurvey.QuestionId.ToString());
 		//    SearchItemCollection.Add(SearchItem);
 		//}
 

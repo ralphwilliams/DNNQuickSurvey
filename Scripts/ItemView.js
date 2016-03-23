@@ -17,6 +17,8 @@ DNNQuickSurvey.itemListViewModel = function (moduleId, resx) {
         getItemList();
     }
 
+	console.log(service.baseUrl);
+
     var getItemList = function () {
         isLoading(true);
         var jqXHR = $.ajax({

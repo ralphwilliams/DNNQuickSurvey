@@ -133,19 +133,19 @@
     <value>Assigned User</value>
   </data>
   <data name="lblDescription.Help" xml:space="preserve">
-    <value>Enter a Description for your Item</value>
+    <value>Enter a Description for your Question</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="lblName.Help" xml:space="preserve">
-    <value>Enter the Name for your Item</value>
+    <value>Enter the Name for your Question</value>
   </data>
   <data name="lblName.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="BasicSettings.Text" xml:space="preserve">
-    <value>DNNQuickSurvey Item Basic Settings</value>
+    <value>DNNQuickSurvey Question Basic Settings</value>
   </data>
   <data name="ExpandAll.Text" xml:space="preserve">
     <value>Expand All</value>

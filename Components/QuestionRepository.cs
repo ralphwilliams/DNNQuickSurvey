@@ -21,71 +21,71 @@ using DotNetNuke.Framework;
 
 namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 {
-	public class ItemRepository : ServiceLocator<IItemRepository, ItemRepository>, IItemRepository
+	public class QuestionRepository : ServiceLocator<IQuestionRepository, QuestionRepository>, IQuestionRepository
 	{
 
-		protected override Func<IItemRepository> GetFactory()
+		protected override Func<IQuestionRepository> GetFactory()
 		{
-			return () => new ItemRepository();
+			return () => new QuestionRepository();
 		}
 
-		public int AddItem(Item t)
+		public int AddQuestion(Question t)
 		{
 			Requires.NotNull(t);
 			Requires.PropertyNotNegative(t, "ModuleId");
 
 			using (IDataContext ctx = DataContext.Instance())
 			{
-				var rep = ctx.GetRepository<Item>();
+				var rep = ctx.GetRepository<Question>();
 				rep.Insert(t);
 			}
-			return t.ItemId;
+			return t.QuestionId;
 		}
 
-		public void DeleteItem(Item t)
+		public void DeleteQuestion(Question t)
 		{
 			Requires.NotNull(t);
-			Requires.PropertyNotNegative(t, "ItemId");
+			Requires.PropertyNotNegative(t, "QuestionId");
 
 			using (IDataContext ctx = DataContext.Instance())
 			{
-				var rep = ctx.GetRepository<Item>();
+				var rep = ctx.GetRepository<Question>();
 				rep.Delete(t);
 			}
 		}
 
-		public void DeleteItem(int itemId, int moduleId)
+		public void DeleteQuestion(int questionId, int moduleId)
 		{
-			Requires.NotNegative("itemId", itemId);
+			Requires.NotNegative("questionId", questionId);
 			Requires.NotNegative("moduleId", moduleId);
 
-			var t = GetItem(itemId, moduleId);
-			DeleteItem(t);
+			var t = GetQuestion(questionId, moduleId);
+			DeleteQuestion(t);
 		}
 
-		public Item GetItem(int itemId, int moduleId)
+		public Question GetQuestion(int questionId, int moduleId)
 		{
-			Requires.NotNegative("itemId", itemId);
+			Requires.NotNegative("questionId", questionId);
 			Requires.NotNegative("moduleId", moduleId);
 
-			Item t;
+			Question t;
 			using (IDataContext ctx = DataContext.Instance())
 			{
-				var rep = ctx.GetRepository<Item>();
-				t = rep.GetById(itemId, moduleId);
+				var rep = ctx.GetRepository<Question>();
+				t = rep.GetById(questionId, moduleId);
 			}
 			return t;
 		}
 
-		public IQueryable<Item> GetItems(int moduleId)
+		public IQueryable<Question> GetQuestions(int moduleId)
 		{
 			Requires.NotNegative("moduleId", moduleId);
 
-			IQueryable<Item> t = null;
+			IQueryable<Question> t = null;
 
 			using (IDataContext ctx = DataContext.Instance())
 			{
-				var rep = ctx.GetRepository<Item>();
+				var rep = ctx.GetRepository<Question>();
 
 				t = rep.Get(moduleId).AsQueryable();
 			}
@@ -93,25 +93,25 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 			return t;
 		}
 
-		public IPagedList<Item> GetItems(string searchTerm, int moduleId, int pageIndex, int pageSize)
+		public IPagedList<Question> GetQuestions(string searchTerm, int moduleId, int pageIndex, int pageSize)
 		{
 			Requires.NotNegative("moduleId", moduleId);
 
-			var t = GetItems(moduleId).Where(c => c.ItemName.Contains(searchTerm)
-												|| c.ItemDescription.Contains(searchTerm));
+			var t = GetQuestions(moduleId).Where(c => c.QuestionName.Contains(searchTerm)
+												|| c.QuestionType.Contains(searchTerm));
 
 
-			return new PagedList<Item>(t, pageIndex, pageSize);
+			return new PagedList<Question>(t, pageIndex, pageSize);
 		}
 
-		public void UpdateItem(Item t)
+		public void UpdateQuestion(Question t)
 		{
 			Requires.NotNull(t);
-			Requires.PropertyNotNegative(t, "ItemId");
+			Requires.PropertyNotNegative(t, "QuestionId");
 
 			using (IDataContext ctx = DataContext.Instance())
 			{
-				var rep = ctx.GetRepository<Item>();
+				var rep = ctx.GetRepository<Question>();
 				rep.Update(t);
 			}
 		}

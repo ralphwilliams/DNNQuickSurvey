@@ -100,6 +100,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\app.js" />
+    <Content Include="App\Controllers\surveyEditCtrl.js" />
+    <Content Include="App\Controllers\surveyFormCtrl.js" />
+    <Content Include="App\Controllers\surveyResultsCtrl.js" />
+    <Content Include="App\factories.js" />
+    <Content Include="App\Views\surveyEditView.html" />
+    <Content Include="App\Views\surveyFormView.html" />
+    <Content Include="App\Views\surveyResultsView.html" />
     <Content Include="App_LocalResources\Edit.resx" />
     <Content Include="App_LocalResources\Settings.resx" />
     <Content Include="App_LocalResources\View.resx" />
@@ -107,6 +115,12 @@
   <ItemGroup>
     <Content Include="BuildScripts\ModulePackage.targets" />
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
   </ItemGroup>
@@ -115,20 +129,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\FeatureController.cs" />
-    <Compile Include="Components\IItemRepository.cs" />
-    <Compile Include="Components\Item.cs" />
-    <Compile Include="Components\ItemRepository.cs" />
+    <Compile Include="Components\IQuestionRepository.cs" />
+    <Compile Include="Components\Question.cs" />
+    <Compile Include="Components\QuestionRepository.cs" />
+    <Compile Include="Services\ServiceRouteMapper.cs" />
+    <Compile Include="Services\ViewModels\QuestionViewModel.cs" />
+    <Compile Include="Services\ViewModels\UserViewModel.cs" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ItemEdit.js" />
     <Content Include="Scripts\ItemView.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\QuickSettings.js" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ItemController.cs" />
-    <Compile Include="Services\ServiceRouteMapper.cs" />
+    <Compile Include="Services\QuestionController.cs" />
     <Compile Include="Services\UserController.cs" />
-    <Compile Include="Services\ViewModels\ItemViewModel.cs" />
-    <Compile Include="Services\ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentation\Documentation.css" />
@@ -142,6 +183,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular-animate.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular-touch.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -9,7 +9,7 @@ using DotNetNuke.Entities.Users;
 namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 {
 	[SupportedModules("DNNQuickSurvey")]
-	[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+	[DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
 	public class UserController : DnnApiController
 	{
 		public UserController() { }

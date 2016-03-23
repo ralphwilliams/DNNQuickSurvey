@@ -16,26 +16,26 @@ using Newtonsoft.Json;
 namespace RalphWilliams.Modules.DNNQuickSurvey.Services.ViewModels
 {
 	[JsonObject(MemberSerialization.OptIn)]
-	public class ItemViewModel
+	public class QuestionViewModel
 	{
-		public ItemViewModel(Item t)
+		public QuestionViewModel(Question t)
 		{
-			Id = t.ItemId;
-			Name = t.ItemName;
-			Description = t.ItemDescription;
+			Id = t.QuestionId;
+			Name = t.QuestionName;
+			Description = t.QuestionType;
 			AssignedUser = t.AssignedUserId;
 		}
 
-		public ItemViewModel(Item t, string editUrl)
+		public QuestionViewModel(Question t, string editUrl)
 		{
-			Id = t.ItemId;
-			Name = t.ItemName;
-			Description = t.ItemDescription;
+			Id = t.QuestionId;
+			Name = t.QuestionName;
+			Description = t.QuestionType;
 			EditUrl = editUrl;
 		}
 
 
-		public ItemViewModel() { }
+		public QuestionViewModel() { }
 
 		[JsonProperty("id")]
 		public int Id { get; set; }
