@@ -16,15 +16,24 @@
 	}
 
 	// ADD - UPDATE
-	service.setQuestions = function (questions) {
+	service.setQuestions = function (question) {
 		return $http({
 			method: 'POST',
-			url: $self.ServicePath + 'AddQuestion?moduleId=' + sf.getModuleId(),
+			url: $self.ServicePath + 'Upsert?moduleId=' + sf.getModuleId(),
 			headers: $self.Headers,
-			data: JSON.stringify(questions)
+			data: JSON.stringify(question)
 		});
 	};
 
+	// Delete
+	service.deleteQuestion = function (questionId) {
+		return $http({
+			method: 'POST',
+			url: $self.ServicePath + 'Delete?questionId=' + questionId,
+			headers: $self.Headers,
+			data: JSON.stringify(questionId)
+		});
+	};
 	service.callQuestionsData = function () {
 		var deferred = $q.defer();
 		$http({

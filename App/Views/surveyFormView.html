@@ -1,4 +1,6 @@
 ﻿<h2>Survey Form View</h2>
-<h3>{{ questions }}</h3>
+<ol>
+	<li ng-repeat="question in questions">{{ question.name }}</li>
+</ol>
 <a ng-href="#/edit" class="btn btn-primary">Edit Questions</a>
 <a ng-href="#/results" class="btn btn-default">See Results</a>

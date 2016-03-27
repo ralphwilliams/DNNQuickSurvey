@@ -31,6 +31,8 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 
 		public QuestionController() : this(QuestionRepository.Instance) { }
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public HttpResponseMessage Delete(int questionId)
 		{
 			var question = _repository.GetQuestion(questionId, ActiveModule.ModuleID);
@@ -101,7 +103,6 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 			{
 				QuestionName = question.Name,
 				QuestionType = question.Description,
-				AssignedUserId = question.AssignedUser,
 				ModuleId = ActiveModule.ModuleID,
 				CreatedByUserId = UserInfo.UserID,
 				LastModifiedByUserId = UserInfo.UserID,

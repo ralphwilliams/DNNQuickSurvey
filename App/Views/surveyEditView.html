@@ -2,8 +2,11 @@
 <ol>
 	<li ng-repeat="question in questions">
 		{{ question.name }}
-		<input ng-model="question.name"/>
+		<a class="btn btn-default" ng-click="removeQuestion(question.id)">Delete question</a>
 	</li>
-	<li><input ng-model="newQuestionName"/> <a class="btn btn-primary" ng-model="addNewQuestion(newQuestionName)">Add new question</a></li>
+	<li>
+		<input ng-model="newQuestionName" type="text" />
+		<a class="btn btn-primary" ng-click="addNewQuestion(newQuestionName)">Add new question</a>
+	</li>
 </ol>
 <a ng-href="#" class="btn btn-primary">Return to Survey</a>

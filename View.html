@@ -1,6 +1,5 @@
 ﻿[CSS:{ path: "~/DesktopModules/DNNQuickSurvey/Content/bootstrap.min.css"}]
 [JavaScript:{ jsname: "JQuery" }]
-[JavaScript:{ jsname: "Knockout" }]
 [JavaScript:{ path: "~/Resources/Shared/scripts/dnn.jquery.js"}]
 [JavaScript:{ path: "~/DesktopModules/DNNQuickSurvey/scripts/angular.min.js"}]
 [JavaScript:{ path: "~/DesktopModules/DNNQuickSurvey/scripts/angular-animate.min.js"}]
@@ -15,10 +14,13 @@
 [JavaScript:{ path: "~/DesktopModules/DNNQuickSurvey/App/Controllers/surveyResultsCtrl.js"}]
 
 <script type="text/javascript">
-	var moduleName = "DNNQuickSurvey"; // Sets Module's name
-	var sf = $.ServicesFramework(parseInt("[ModuleContext:ModuleId]")); // Gets current module Id
+	// Sets Module's name
+	var moduleName = "DNNQuickSurvey";
+	// Gets current module Id
+	var sf = $.ServicesFramework(parseInt("[ModuleContext:ModuleId]")); 
 	if ("[ModuleContext:EditMode]" === 'True') {
-		var editMode = true; // Determine if in edit mode
+		// Determine if in edit mode
+		var editMode = true;
 	}
 </script>
 
