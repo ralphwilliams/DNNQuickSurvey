@@ -129,10 +129,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\IAnswerRepository.cs" />
     <Compile Include="Components\IQuestionRepository.cs" />
+    <Compile Include="Components\Answer.cs" />
     <Compile Include="Components\Question.cs" />
+    <Compile Include="Components\AnswerRepository.cs" />
     <Compile Include="Components\QuestionRepository.cs" />
+    <Compile Include="Services\AnswerController.cs" />
     <Compile Include="Services\ServiceRouteMapper.cs" />
+    <Compile Include="Services\ViewModels\AnswerViewModel.cs" />
     <Compile Include="Services\ViewModels\QuestionViewModel.cs" />
     <Compile Include="Services\ViewModels\UserViewModel.cs" />
     <Content Include="Scripts\angular-animate.js" />

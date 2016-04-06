@@ -1,6 +1,9 @@
 ﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Questions]') AND type in (N'U'))
 DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Questions]
 GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Answers]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Answers]
+GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]') AND type in (N'U'))
 DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]
 GO

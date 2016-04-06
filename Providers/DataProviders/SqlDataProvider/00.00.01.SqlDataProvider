@@ -33,17 +33,18 @@ GO
 
 
 /*************************/
-/***** Results Table *****/
+/***** Answers Table *****/
 /*************************/
 
-IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]') AND type in (N'U'))
-	DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Results]
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNQuickSurvey_Answers]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Answers]
 GO
 
-CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Results
+CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Answers
 (
-	[ResultId] INT NOT NULL IDENTITY (1, 1),
-	[ResultValue] INT NOT NULL,
+	[AnswerId] INT NOT NULL IDENTITY (1, 1),
+	[AnswerValue] INT NOT NULL,
+	[QuestionId] INT NOT NULL,
 	[ModuleId] INT NOT NULL,
 	[CreatedOnDate] DATETIME NOT NULL,
 	[CreatedByUserId] INT NOT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}DNNQuickSurvey_Results
 GO
 
 
-ALTER TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Results] ADD CONSTRAINT [PK_{objectQualifier}DNNQuickSurvey_Results] PRIMARY KEY CLUSTERED ([ResultId])
+ALTER TABLE {databaseOwner}[{objectQualifier}DNNQuickSurvey_Answers] ADD CONSTRAINT [PK_{objectQualifier}DNNQuickSurvey_Answers] PRIMARY KEY CLUSTERED ([AnswerId])
 GO
 
 /************************************************************/

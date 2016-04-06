@@ -29,7 +29,8 @@
 					});
 			}
 
-			// Question object constructor - Properties are the same as what the QuestionController is expecting
+			// Question object constructor
+			// Properties are the same as what the QuestionController is expecting
 			function Question(name) {
 				// Name from input
 				this.Name = name;
