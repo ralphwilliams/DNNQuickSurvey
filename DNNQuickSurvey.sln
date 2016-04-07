@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{68C3CE
 		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{164174EE-9041-4189-8B31-8E9F40F4E702}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\web.config = ..\..\web.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
