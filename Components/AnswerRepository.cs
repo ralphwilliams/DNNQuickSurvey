@@ -77,17 +77,17 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 			return t;
 		}
 
-		public IQueryable<Answer> GetAnswers(int moduleId)
+		public IEnumerable<Answer> GetAnswers(int moduleId)
 		{
 			Requires.NotNegative("moduleId", moduleId);
 
-			IQueryable<Answer> t = null;
+            IEnumerable<Answer> t = null;
 
 			using (IDataContext ctx = DataContext.Instance())
 			{
 				var rep = ctx.GetRepository<Answer>();
 
-				t = rep.Get(moduleId).AsQueryable();
+				t = rep.Get(moduleId);
 			}
 
 			return t;
