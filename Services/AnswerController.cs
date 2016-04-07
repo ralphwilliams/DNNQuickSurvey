@@ -51,22 +51,22 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Services
 
 		public HttpResponseMessage GetList()
 		{
-			List<AnswerViewModel> answers;
+			var answers = _repository.GetAnswers(ActiveModule.ModuleID);
+
+		    if (answers == null || !answers.Any()) return Request.CreateResponse(string.Empty);
+
+		    List<AnswerViewModel> response = null;
 
 			if (Globals.IsEditMode())
 			{
-				answers = _repository.GetAnswers(ActiveModule.ModuleID)
-					   .Select(answer => new AnswerViewModel(answer, GetEditUrl(answer.AnswerId)))
-					   .ToList();
+				response = answers.Select(answer => new AnswerViewModel(answer, GetEditUrl(answer.AnswerId))).ToList();
 			}
 			else
 			{
-				answers = _repository.GetAnswers(ActiveModule.ModuleID)
-					   .Select(answer => new AnswerViewModel(answer, ""))
-					   .ToList();
+				response = answers.Select(answer => new AnswerViewModel(answer, string.Empty)).ToList();
 			}
 
-			return Request.CreateResponse(answers);
+			return Request.CreateResponse(response);
 		}
 
 		protected string GetEditUrl(int id)

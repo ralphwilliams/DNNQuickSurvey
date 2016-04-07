@@ -10,14 +10,13 @@
 ' 
 */
 
-using System.Linq;
+using System.Collections.Generic;
 using DotNetNuke.Collections;
 
 namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 {
 	public interface IAnswerRepository
 	{
-
 		int AddAnswer(Answer t);
 
 		void DeleteAnswer(int answerId, int moduleId);
@@ -26,7 +25,7 @@ namespace RalphWilliams.Modules.DNNQuickSurvey.Components
 
 		Answer GetAnswer(int answerId, int moduleId);
 
-		IQueryable<Answer> GetAnswers(int moduleId);
+		IEnumerable<Answer> GetAnswers(int moduleId);
 
 		IPagedList<Answer> GetAnswers(string searchTerm, int moduleId, int pageIndex, int pageSize);
 
